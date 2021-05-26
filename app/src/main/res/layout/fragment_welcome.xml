@@ -3,46 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pet"
+    android:background="@drawable/background_first"
+    tools:context=".fragments.FragmentWelcome"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/lost"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="199dp" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="504dp"
-        android:background="@drawable/shape_button_background"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/selector_button_background"
         android:text="@string/login"
-        android:textColor="@color/white"
+        android:textColor="@color/selector_white_alpha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_percent="0.6" />
 
     <Button
+
         android:id="@+id/btn_rigster"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/shape_button_background"
+        android:background="@drawable/selector_button_background"
         android:text="@string/register"
-        android:textColor="@color/white"
+        android:textColor="@color/selector_white_alpha"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_login"
-        app:layout_constraintVertical_bias="0.064"
+        app:layout_constraintVertical_bias="0.031"
         app:layout_constraintWidth_percent="0.6" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/lost"
+        app:layout_constraintTop_toBottomOf="@id/btn_rigster"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

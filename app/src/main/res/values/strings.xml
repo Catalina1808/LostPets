@@ -3,4 +3,6 @@
     <string name="login">Log In</string>
     <string name="register">Register</string>
     <string name="lost_pet">Lost Pets</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
