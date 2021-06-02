@@ -11,6 +11,7 @@ import com.example.lostpet.R;
 import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
 
 import static com.example.lostpet.fragments.FragmentRegister.TAG_FRAGMENT_REGISTER;
+import static com.example.lostpet.fragments.FragmentLogin.TAG_FRAGMENT_LOGIN;
 
 public class WelcomeActivity extends AppCompatActivity implements OnFragmentActivityCommunication {
 
@@ -36,6 +37,11 @@ public class WelcomeActivity extends AppCompatActivity implements OnFragmentActi
         switch (TAG){
             case TAG_FRAGMENT_REGISTER:{
                 fragment= FragmentRegister.newInstance();
+                break;
+            }
+
+            case TAG_FRAGMENT_LOGIN: {
+                fragment = FragmentLogin.newInstance();
                 break;
             }
             default: return;

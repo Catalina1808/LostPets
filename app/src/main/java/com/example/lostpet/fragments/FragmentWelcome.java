@@ -48,6 +48,10 @@ public class FragmentWelcome extends Fragment {
           goToRegister();
 
         });
+
+        view.findViewById(R.id.btn_login).setOnClickListener(v -> {
+            goToLogin();
+        });
     }
 
     private  void goToRegister(){
@@ -56,5 +60,10 @@ public class FragmentWelcome extends Fragment {
          }
     }
 
+    private void goToLogin() {
+        if(activityCommunication != null) {
+            activityCommunication.onReplaceFragment(FragmentLogin.TAG_FRAGMENT_LOGIN);
+        }
+    }
 
 }
