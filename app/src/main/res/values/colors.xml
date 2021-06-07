@@ -8,7 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white_alpha50">#80FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="orange">#ED0864</color>
-    <color name="middle_orange">#EF768E</color>
-    <color name="dark_orange">#EC1451</color>
+    <color name="hot_pink">#ED0864</color>
+    <color name="light_pink">#EF768E</color>
+    <color name="hot_orange">#F15705</color>
+    <color name="light_orange">#F1A67E</color>
+    <color name="red_pink">#EC1451</color>
 </resources>

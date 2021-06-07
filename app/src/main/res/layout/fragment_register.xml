@@ -35,10 +35,10 @@
         />
 
     <Button
-        android:id="@+id/btn_rigster"
+        android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/selector_button_background"
+        android:background="@drawable/selector_button_background_orange"
         android:text="@string/register"
         android:textColor="@color/selector_white_alpha"
         app:layout_constraintBottom_toBottomOf="parent"
