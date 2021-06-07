@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "241018714",
+    "project_id": "lost-pets-android",
+    "storage_bucket": "lost-pets-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241018714:android:c7535cd521ad95dd07b563",
+        "android_client_info": {
+          "package_name": "com.example.lostpet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241018714-qn01k22i9nu2k885kctmkpogrdi8urn4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd7Nx_JWQGsb4iNcFlOFAIXqgazRUvzWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241018714-qn01k22i9nu2k885kctmkpogrdi8urn4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
