@@ -34,7 +34,7 @@
         />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_add2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/selector_button_background_orange"

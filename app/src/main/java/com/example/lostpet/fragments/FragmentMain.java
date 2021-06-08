@@ -52,7 +52,10 @@ public class FragmentMain extends Fragment {
         view.findViewById(R.id.btn_view).setOnClickListener(v -> {
             goToView();
         });
+
     }
+
+
 
     private  void goToAdd(){
         if(activityCommunication !=null){
