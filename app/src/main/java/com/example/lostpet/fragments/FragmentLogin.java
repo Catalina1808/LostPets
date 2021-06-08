@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.lostpet.activities.SecondActivity;
+import com.example.lostpet.activities.WelcomeActivity;
 import com.example.lostpet.models.Constants;
 import com.example.lostpet.R;
 import com.example.lostpet.models.VolleyConfigSingleton;
@@ -113,6 +115,8 @@ public class FragmentLogin extends Fragment {
 
 //        createFirebaseUser(email, password);
         loginUser(email, password);
+        goToSecondActivity();
+
     }
 
     private void createFirebaseUser(String email, String password) {
@@ -178,7 +182,11 @@ public class FragmentLogin extends Fragment {
         );
 
         VolleyConfigSingleton.getInstance(Objects.requireNonNull(getActivity()).getApplicationContext()).addToRequestQueue(jsonRequest);
+
+
     }
+
+
 
     private void handleResponse(JSONObject response) {
         try {
@@ -202,5 +210,11 @@ public class FragmentLogin extends Fragment {
         startActivity(new Intent(getActivity(), MainActivity.class));
         Objects.requireNonNull(getActivity()).finish();
     }
+
+    private void goToSecondActivity() {
+        startActivity(new Intent(getActivity(), SecondActivity.class));
+        Objects.requireNonNull(getActivity()).finish();
+    }
+
 }
 
