@@ -113,20 +113,19 @@ public class FragmentLogin extends Fragment {
             passwordEditText.setError(null);
         }
 
-//        createFirebaseUser(email, password);
-        loginUser(email, password);
-        goToSecondActivity();
+        loginFirebaseUser(email, password);
+    //    loginUser(email, password);
 
     }
 
-    private void createFirebaseUser(String email, String password) {
+    private void loginFirebaseUser(String email, String password) {
         if (getActivity() == null) {
             return;
         }
 
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(getActivity(), task -> {
                     if (task.isSuccessful()) {
                         progressBar.setVisibility(View.GONE);
@@ -135,7 +134,7 @@ public class FragmentLogin extends Fragment {
                         Toast.makeText(getContext(), "Authentication success.",
                                 Toast.LENGTH_SHORT).show();
 
-                        goToMainActivity();
+                        goToSecondActivity();
                     } else {
                         Toast.makeText(getContext(), "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
