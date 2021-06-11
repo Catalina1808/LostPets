@@ -8,14 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.lostpet.R;
+import com.example.lostpet.data.AnnouncementRepository;
+import com.example.lostpet.data.AnnouncementRepositoryListener;
 import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
+import com.example.lostpet.models.dbEntities.AnnouncementItem;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Random;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -23,6 +31,14 @@ public class FragmentAdd extends Fragment {
     private OnFragmentActivityCommunication activityCommunication;
     public static final String TAG_FRAGMENT_ADD = "TAG_FRAGMENT_ADD";
     private Button BSelectImage;
+    private EditText ETPetName;
+    private EditText ETBreed;
+    private EditText ETLocation;
+    private String OwnerEmail;
+    private FirebaseAuth mAuth;
+    private String imageUri;
+    private AnnouncementRepository announcementRepository= new AnnouncementRepository();
+
     private ImageView IVPreviewImage;
     private int SELECT_PICTURE = 200;
 
@@ -49,16 +65,48 @@ public class FragmentAdd extends Fragment {
         return inflater.inflate(R.layout.fragment_add, container, false);
     }
 
+    public void setUpViews(View view)
+    {
+        mAuth = FirebaseAuth.getInstance();
+        OwnerEmail = mAuth.getCurrentUser().getEmail();
+        BSelectImage = view.findViewById(R.id.BSelectImage);
+        IVPreviewImage = view.findViewById(R.id.IVPreviewImage);
+        ETBreed= view.findViewById(R.id.edt_breed);
+        ETLocation= view.findViewById(R.id.edt_location);
+        ETPetName= view.findViewById(R.id.edt_name);
+    }
+
+    public void insertAnnouncement(){
+        Random rand = new Random();
+
+        String ownerEmail= OwnerEmail.toString();
+        String breed= ETBreed.getText().toString();
+        String location= ETLocation.getText().toString();
+        String petName= ETPetName.getText().toString();
+        if(ownerEmail.isEmpty() || breed.isEmpty() || location.isEmpty() || petName.isEmpty() || imageUri.isEmpty())
+            return;
+        AnnouncementItem announcementItem= new AnnouncementItem(rand.nextInt(100), petName, breed, imageUri, ownerEmail);
+        AnnouncementRepositoryListener listener=  new AnnouncementRepositoryListener() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(getContext(),
+                        "Insertion success.",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        };
+        announcementRepository.insertAnnouncement(announcementItem, listener);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-/*
-        view.findViewById(R.id.btn_register).setOnClickListener(v -> {
-            goToRegister();
+
+        setUpViews(view);
+
+        view.findViewById(R.id.btn_addAnnouncement).setOnClickListener(v -> {
+            insertAnnouncement();
         });
- */
-        BSelectImage = view.findViewById(R.id.BSelectImage);
-        IVPreviewImage = view.findViewById(R.id.IVPreviewImage);
 
         BSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +150,7 @@ public class FragmentAdd extends Fragment {
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
+                    imageUri=selectedImageUri.toString();
                 }
             }
         }

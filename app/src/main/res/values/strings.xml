@@ -8,6 +8,7 @@
     <string name="add">Add announcement</string>
     <string name="view_all">View all announcements</string>
     <string name="view_mine">View my announcements</string>
+    <string name="view_random">View random pets</string>
     <string name="pet_name">Pet name</string>
     <string name="breed">Breed</string>
     <string name="location">Location</string>
