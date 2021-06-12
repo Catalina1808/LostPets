@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lostpet.R;
+import com.example.lostpet.adapters.AllAnnouncementsAdapter;
 import com.example.lostpet.adapters.AnnouncementAdapter;
 import com.example.lostpet.data.AnnouncementRepository;
 import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
@@ -35,7 +36,6 @@ public class FragmentView extends Fragment {
     private ArrayList<AnnouncementElement> announcementList = new ArrayList<>();
     private AnnouncementRepository announcementRepository= new AnnouncementRepository();
 
-    private ImageView IVPreviewImage;
 
     public void getAnnouncements(){
         AnnouncementRepository.OnGetAnnouncementsListener listener=  new AnnouncementRepository.OnGetAnnouncementsListener() {
@@ -55,7 +55,7 @@ public class FragmentView extends Fragment {
         });
     }
 
-    private AnnouncementAdapter announcementAdapter = new AnnouncementAdapter(announcementList, new OnItemClickListener() {
+    private AllAnnouncementsAdapter announcementAdapter = new AllAnnouncementsAdapter(announcementList, new OnItemClickListener() {
         @Override
         public void onDeleteClick(AnnouncementElement element) {
 

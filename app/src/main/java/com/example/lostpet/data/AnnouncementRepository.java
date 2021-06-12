@@ -1,6 +1,7 @@
 package com.example.lostpet.data;
 
 import com.example.lostpet.ApplicationController;
+import com.example.lostpet.data.tasks.DeleteAnnouncementTask;
 import com.example.lostpet.data.tasks.GetAllAnnouncementsTask;
 import com.example.lostpet.data.tasks.InsertAnnouncementTask;
 import com.example.lostpet.models.dbEntities.AnnouncementItem;
@@ -31,5 +32,9 @@ public class AnnouncementRepository {
 
     public void getAnnouncements(OnGetAnnouncementsListener listener){
         new GetAllAnnouncementsTask(announcementDataBase, listener).execute();
+    }
+
+    public void deleteAnnouncement(AnnouncementItem announcementItem) {
+        new DeleteAnnouncementTask(announcementDataBase).execute(announcementItem);
     }
 }
