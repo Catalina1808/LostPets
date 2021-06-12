@@ -53,6 +53,10 @@ public class FragmentMain extends Fragment {
             goToView();
         });
 
+        view.findViewById(R.id.btn_view_mine).setOnClickListener(v -> {
+            goToViewMine();
+        });
+
 
     }
 
@@ -67,6 +71,12 @@ public class FragmentMain extends Fragment {
     private void goToView() {
         if(activityCommunication != null) {
             activityCommunication.onAddFragment(FragmentView.TAG_FRAGMENT_VIEW);
+        }
+    }
+
+    private void goToViewMine() {
+        if(activityCommunication != null) {
+            activityCommunication.onAddFragment(FragmentViewMine.TAG_FRAGMENT_VIEW_MINE);
         }
     }
 

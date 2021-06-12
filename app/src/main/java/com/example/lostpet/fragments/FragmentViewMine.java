@@ -28,27 +28,22 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentView extends Fragment {
+public class FragmentViewMine extends Fragment {
 
-    public static final String TAG_FRAGMENT_VIEW = "TAG_FRAGMENT_VIEW";
+    public static final String TAG_FRAGMENT_VIEW_MINE = "TAG_FRAGMENT_VIEW_MINE";
     private OnFragmentActivityCommunication activityCommunication;
     private ArrayList<AnnouncementElement> announcementList = new ArrayList<>();
     private AnnouncementRepository announcementRepository= new AnnouncementRepository();
+    private FirebaseAuth mAuth;
 
-    private ImageView IVPreviewImage;
 
     public void getAnnouncements(){
-        AnnouncementRepository.OnGetAnnouncementsListener listener=  new AnnouncementRepository.OnGetAnnouncementsListener() {
-            @Override
-            public void onSuccess(List<AnnouncementItem> announcementItems) {
-                Log.e("Error", "Get announcements");
-            }
-        };
 
         announcementRepository.getAnnouncements(announcementsResult -> {
             announcementList.clear();
             for (AnnouncementItem announcementItem : announcementsResult
             ) {
+                if(announcementItem.convert().getOwner_email().equals(mAuth.getCurrentUser().getEmail()))
                 announcementList.add(announcementItem.convert());
             }
             announcementAdapter.notifyDataSetChanged();
@@ -63,11 +58,11 @@ public class FragmentView extends Fragment {
     });
 
 
-    public static FragmentView newInstance() {
+    public static FragmentViewMine newInstance() {
 
         Bundle args = new Bundle();
 
-        FragmentView fragment = new FragmentView();
+        FragmentViewMine fragment = new FragmentViewMine();
         fragment.setArguments(args);
         return fragment;
     }
@@ -83,8 +78,9 @@ public class FragmentView extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_view, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_view_mine, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        getAnnouncements();
         RecyclerView recyclerView = view.findViewById(R.id.rv_announcements);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -96,7 +92,7 @@ public class FragmentView extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getAnnouncements();
+
 
 
     }

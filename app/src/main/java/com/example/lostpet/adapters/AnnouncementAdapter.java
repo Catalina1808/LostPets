@@ -1,4 +1,4 @@
-package com.example.library.adapters;
+package com.example.lostpet.adapters;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,9 +25,9 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
     ArrayList<AnnouncementElement> announcementList;
     OnItemClickListener onItemClickListener;
 
-    public AnnouncementAdapter(ArrayList<AnnouncementElement>bookList,OnItemClickListener onItemClickListener)
+    public AnnouncementAdapter(ArrayList<AnnouncementElement>announcementList,OnItemClickListener onItemClickListener)
     {
-        this.announcementList =bookList;
+        this.announcementList =announcementList;
         this.onItemClickListener= onItemClickListener;
     }
 

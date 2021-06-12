@@ -11,10 +11,12 @@ import com.example.lostpet.R;
 import com.example.lostpet.fragments.FragmentAdd;
 import com.example.lostpet.fragments.FragmentMain;
 import com.example.lostpet.fragments.FragmentView;
+import com.example.lostpet.fragments.FragmentViewMine;
 import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
 
 import static com.example.lostpet.fragments.FragmentAdd.TAG_FRAGMENT_ADD;
 import static com.example.lostpet.fragments.FragmentView.TAG_FRAGMENT_VIEW;
+import static com.example.lostpet.fragments.FragmentViewMine.TAG_FRAGMENT_VIEW_MINE;
 
 public class SecondActivity extends AppCompatActivity implements OnFragmentActivityCommunication {
 
@@ -49,6 +51,11 @@ public class SecondActivity extends AppCompatActivity implements OnFragmentActiv
                 break;
             }
 
+            case TAG_FRAGMENT_VIEW_MINE:{
+                fragment= FragmentViewMine.newInstance();
+                break;
+            }
+
             default: return;
         }
 
@@ -71,6 +78,11 @@ public class SecondActivity extends AppCompatActivity implements OnFragmentActiv
 
             case TAG_FRAGMENT_VIEW:{
                 fragment= FragmentView.newInstance();
+                break;
+            }
+
+            case TAG_FRAGMENT_VIEW_MINE:{
+                fragment= FragmentViewMine.newInstance();
                 break;
             }
 
