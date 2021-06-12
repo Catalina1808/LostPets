@@ -11,6 +11,9 @@
     <color name="hot_pink">#ED0864</color>
     <color name="light_pink">#EF768E</color>
     <color name="hot_orange">#F15705</color>
+    <color name="yellow">#FBE204</color>
     <color name="light_orange">#F1A67E</color>
+    <color name="green">#01B809</color>
+    <color name="blue">#1AC5F1</color>
     <color name="red_pink">#EC1451</color>
 </resources>

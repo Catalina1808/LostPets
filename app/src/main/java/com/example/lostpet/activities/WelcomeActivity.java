@@ -56,4 +56,28 @@ public class WelcomeActivity extends AppCompatActivity implements OnFragmentActi
         fragmentTransaction.commit();
     }
 
+    public void onAddFragment(String TAG){
+        FragmentManager fragmentManager= getSupportFragmentManager();
+
+        Fragment fragment;
+
+        switch (TAG){
+            case TAG_FRAGMENT_REGISTER:{
+                fragment= FragmentRegister.newInstance();
+                break;
+            }
+
+            case TAG_FRAGMENT_LOGIN: {
+                fragment = FragmentLogin.newInstance();
+                break;
+            }
+            default: return;
+        }
+
+        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fly_container,fragment, TAG);
+        fragmentTransaction.addToBackStack(TAG);
+        fragmentTransaction.commit();
+    }
+
 }

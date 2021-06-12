@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.lostpet.R;
 import com.example.lostpet.data.AnnouncementRepository;
-import com.example.lostpet.data.AnnouncementRepositoryListener;
 import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
 import com.example.lostpet.models.dbEntities.AnnouncementItem;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.List;
 import java.util.Random;
 
 import static android.app.Activity.RESULT_OK;
@@ -77,7 +78,6 @@ public class FragmentAdd extends Fragment {
     }
 
     public void insertAnnouncement(){
-        Random rand = new Random();
 
         String ownerEmail= OwnerEmail.toString();
         String breed= ETBreed.getText().toString();
@@ -85,8 +85,8 @@ public class FragmentAdd extends Fragment {
         String petName= ETPetName.getText().toString();
         if(ownerEmail.isEmpty() || breed.isEmpty() || location.isEmpty() || petName.isEmpty() || imageUri.isEmpty())
             return;
-        AnnouncementItem announcementItem= new AnnouncementItem(rand.nextInt(100), petName, breed, imageUri, ownerEmail);
-        AnnouncementRepositoryListener listener=  new AnnouncementRepositoryListener() {
+        AnnouncementItem announcementItem= new AnnouncementItem(petName, breed, imageUri, ownerEmail, location);
+        AnnouncementRepository.OnInsertAnnouncementListener listener=  new AnnouncementRepository.OnInsertAnnouncementListener() {
             @Override
             public void onSuccess() {
                 Toast.makeText(getContext(),
@@ -96,6 +96,17 @@ public class FragmentAdd extends Fragment {
             }
         };
         announcementRepository.insertAnnouncement(announcementItem, listener);
+    }
+
+    public void getAnnouncements(){
+        AnnouncementRepository.OnGetAnnouncementsListener listener=  new AnnouncementRepository.OnGetAnnouncementsListener() {
+            @Override
+            public void onSuccess(List<AnnouncementItem> announcementItems) {
+                Log.e("Error", "Get announcements");
+            }
+        };
+
+        announcementRepository.getAnnouncements(listener);
     }
 
     @Override

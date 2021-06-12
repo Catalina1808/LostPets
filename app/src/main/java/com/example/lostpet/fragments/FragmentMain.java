@@ -49,9 +49,10 @@ public class FragmentMain extends Fragment {
 
         });
 
-        view.findViewById(R.id.btn_view).setOnClickListener(v -> {
+        view.findViewById(R.id.btn_view_all).setOnClickListener(v -> {
             goToView();
         });
+
 
     }
 
@@ -59,13 +60,13 @@ public class FragmentMain extends Fragment {
 
     private  void goToAdd(){
         if(activityCommunication !=null){
-            activityCommunication.onReplaceFragment(FragmentAdd.TAG_FRAGMENT_ADD);
+            activityCommunication.onAddFragment(FragmentAdd.TAG_FRAGMENT_ADD);
         }
     }
 
     private void goToView() {
         if(activityCommunication != null) {
-            activityCommunication.onReplaceFragment(FragmentView.TAG_FRAGMENT_VIEW);
+            activityCommunication.onAddFragment(FragmentView.TAG_FRAGMENT_VIEW);
         }
     }
 

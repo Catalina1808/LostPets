@@ -10,9 +10,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.lostpet.R;
 import com.example.lostpet.fragments.FragmentAdd;
 import com.example.lostpet.fragments.FragmentMain;
+import com.example.lostpet.fragments.FragmentView;
 import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
 
 import static com.example.lostpet.fragments.FragmentAdd.TAG_FRAGMENT_ADD;
+import static com.example.lostpet.fragments.FragmentView.TAG_FRAGMENT_VIEW;
 
 public class SecondActivity extends AppCompatActivity implements OnFragmentActivityCommunication {
 
@@ -42,11 +44,42 @@ public class SecondActivity extends AppCompatActivity implements OnFragmentActiv
                 break;
             }
 
+            case TAG_FRAGMENT_VIEW:{
+                fragment= FragmentView.newInstance();
+                break;
+            }
+
             default: return;
         }
 
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fly_container2,fragment, TAG);
+        fragmentTransaction.commit();
+    }
+
+
+    public void onAddFragment(String TAG){
+        FragmentManager fragmentManager= getSupportFragmentManager();
+
+        Fragment fragment;
+
+        switch (TAG){
+            case TAG_FRAGMENT_ADD:{
+                fragment= FragmentAdd.newInstance();
+                break;
+            }
+
+            case TAG_FRAGMENT_VIEW:{
+                fragment= FragmentView.newInstance();
+                break;
+            }
+
+            default: return;
+        }
+
+        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fly_container2,fragment, TAG);
+        fragmentTransaction.addToBackStack(TAG);
         fragmentTransaction.commit();
     }
 

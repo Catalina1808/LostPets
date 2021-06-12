@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.lostpet.models.dbEntities.AnnouncementItem;
 
@@ -19,4 +20,7 @@ public interface AnnouncementDAO {
 
     @Delete
     void delete(AnnouncementItem announcementItem);
+
+    @Update
+    void update(AnnouncementItem announcementItem);
 }
