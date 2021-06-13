@@ -33,7 +33,7 @@
         app:layout_constraintHeight_percent="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/btn_add"
-        app:layout_constraintVertical_bias="0.137"
+        app:layout_constraintVertical_bias="0.13"
         app:layout_constraintWidth_percent="0.6" />
 
     <Button
@@ -48,8 +48,33 @@
         app:layout_constraintHeight_percent="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/btn_view_all"
-        app:layout_constraintVertical_bias="0.174"
+        app:layout_constraintVertical_bias="0.15"
         app:layout_constraintWidth_percent="0.6" />
+
+    <Button
+        android:id="@+id/btn_sing_out"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/selector_button_background_orange"
+        android:text="@string/sign_out"
+        android:textColor="@color/selector_white_alpha"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_view_mine"
+        app:layout_constraintVertical_bias="0.18"
+        app:layout_constraintWidth_percent="0.6" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
