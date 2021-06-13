@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_marginTop="@dimen/default_space"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_item"
+    android:background="@color/hot_pink"
     android:padding="@dimen/default_space">
 
     <TextView
         android:id="@+id/tv_pet_name"
         android:layout_width="0dp"
+        android:fontFamily="casual"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="40dp"
@@ -25,6 +27,8 @@
     <TextView
         android:id="@+id/tv_breed"
         android:layout_width="0dp"
+        android:textColor="@color/white"
+        android:fontFamily="casual"
         android:layout_marginLeft="50dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_space"
@@ -41,6 +45,8 @@
     <TextView
         android:id="@+id/tv_location"
         android:layout_width="0dp"
+        android:fontFamily="casual"
+        android:textColor="@color/white"
         android:layout_marginLeft="50dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_space"
@@ -56,26 +62,27 @@
     <TextView
         android:id="@+id/tv_email"
         android:layout_width="0dp"
-        android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="casual"
         android:layout_marginTop="@dimen/default_space"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_delete"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_location"
-        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintVertical_bias="0"
-        tools:text="@string/owner_email"
-        android:layout_marginStart="50dp" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/owner_email" />
 
     <Button
         android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
+        android:fontFamily="casual"
         android:layout_marginRight="4dp"
-        android:background="@drawable/selector_button_background_orange"
+        android:background="@drawable/selector_button_background"
         android:text="@string/delete"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,7 +103,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_email"
-        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintWidth_percent="0.6" />
 
 

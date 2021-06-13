@@ -11,6 +11,7 @@
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="casual"
         android:layout_marginTop="96dp"
         android:background="@drawable/selector_button_background"
         android:text="@string/login"
@@ -20,13 +21,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintWidth_percent="0.6" />
+        app:layout_constraintWidth_percent="0.65" />
 
     <Button
 
         android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="casual"
         android:background="@drawable/selector_button_background"
         android:text="@string/register"
         android:textColor="@color/selector_white_alpha"
@@ -36,13 +38,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_login"
         app:layout_constraintVertical_bias="0.031"
-        app:layout_constraintWidth_percent="0.6" />
+        app:layout_constraintWidth_percent="0.65" />
 
     <Button
 
         android:id="@+id/btn_random_pets"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="casual"
         android:background="@drawable/selector_button_background"
         android:text="@string/view_random"
         android:textColor="@color/selector_white_alpha"
@@ -52,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_register"
         app:layout_constraintVertical_bias="0.03"
-        app:layout_constraintWidth_percent="0.6" />
+        app:layout_constraintWidth_percent="0.65" />
 
     <ImageView
         android:layout_width="wrap_content"

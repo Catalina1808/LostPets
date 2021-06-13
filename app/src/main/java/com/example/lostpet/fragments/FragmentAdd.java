@@ -67,6 +67,7 @@ public class FragmentAdd extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_add, container, false);
@@ -153,6 +154,7 @@ public class FragmentAdd extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
         if (resultCode == RESULT_OK) {
 
             // compare the resultCode with the
@@ -164,6 +166,7 @@ public class FragmentAdd extends Fragment {
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
                     imageUri = selectedImageUri.toString();
+
                 }
             }
         }

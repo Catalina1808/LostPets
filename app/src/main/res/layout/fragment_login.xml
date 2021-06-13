@@ -10,12 +10,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/email"
+        android:fontFamily="casual"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@id/edt_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.4"
         app:layout_constraintWidth_percent="0.8" />
 
     <EditText
@@ -24,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_space"
         android:hint="@string/password"
+        android:fontFamily="casual"
         android:inputType="numberPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +38,7 @@
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="casual"
         android:background="@drawable/selector_button_background_orange"
         android:text="@string/login"
         android:textColor="@color/selector_white_alpha"

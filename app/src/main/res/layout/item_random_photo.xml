@@ -9,6 +9,8 @@
 
     <TextView
         android:id="@+id/tv_owner"
+        android:fontFamily="casual"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +22,6 @@
         android:id="@+id/iv_random"
         android:layout_width="140dp"
         android:layout_height="123dp"
-        android:src="@drawable/abc_vector_test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toEndOf="parent"
