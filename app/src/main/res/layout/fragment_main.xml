@@ -51,20 +51,5 @@
         app:layout_constraintVertical_bias="0.174"
         app:layout_constraintWidth_percent="0.6" />
 
-    <Button
-        android:id="@+id/btn_view_random"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/selector_button_background_orange"
-        android:text="@string/view_random"
-        android:textColor="@color/selector_white_alpha"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btn_view_mine"
-        app:layout_constraintVertical_bias="0.215"
-        app:layout_constraintWidth_percent="0.6" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

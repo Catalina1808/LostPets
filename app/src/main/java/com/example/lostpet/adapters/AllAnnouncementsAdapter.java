@@ -1,6 +1,12 @@
 package com.example.lostpet.adapters;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.ParcelFileDescriptor;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +21,8 @@ import com.example.lostpet.R;
 import com.example.lostpet.interfaces.OnItemClickListener;
 import com.example.lostpet.models.AnnouncementElement;
 
+import java.io.FileDescriptor;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class AllAnnouncementsAdapter extends RecyclerView.Adapter<AllAnnouncementsAdapter.AnnouncementViewHolder> {
@@ -73,7 +81,13 @@ public class AllAnnouncementsAdapter extends RecyclerView.Adapter<AllAnnouncemen
             owner_email.setText((announcementElement.getOwner_email()));
             image.setImageURI(Uri.parse((announcementElement.getImageUri())));
 
+
+
         }
+
+
     }
+
+
 
 }

@@ -2,8 +2,12 @@ package com.example.lostpet.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.lostpet.R;
@@ -23,6 +28,7 @@ import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
 import com.example.lostpet.models.dbEntities.AnnouncementItem;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Random;
 
@@ -85,6 +91,7 @@ public class FragmentAdd extends Fragment {
         String petName= ETPetName.getText().toString();
         if(ownerEmail.isEmpty() || breed.isEmpty() || location.isEmpty() || petName.isEmpty() || imageUri.isEmpty())
             return;
+
         AnnouncementItem announcementItem= new AnnouncementItem(petName, breed, imageUri, ownerEmail, location);
         AnnouncementRepository.OnInsertAnnouncementListener listener=  new AnnouncementRepository.OnInsertAnnouncementListener() {
             @Override
@@ -97,6 +104,7 @@ public class FragmentAdd extends Fragment {
         };
         announcementRepository.insertAnnouncement(announcementItem, listener);
     }
+
 
     public void getAnnouncements(){
         AnnouncementRepository.OnGetAnnouncementsListener listener=  new AnnouncementRepository.OnGetAnnouncementsListener() {
@@ -127,13 +135,7 @@ public class FragmentAdd extends Fragment {
         });
 
     }
-    /*
-    private  void goToRegister(){
-        if(activityCommunication !=null){
-            activityCommunication.onReplaceFragment(FragmentRegister.TAG_FRAGMENT_REGISTER);
-        }
-    }
-     */
+
     void imageChooser() {
 
         // create an instance of the
@@ -161,7 +163,7 @@ public class FragmentAdd extends Fragment {
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
-                    imageUri=selectedImageUri.toString();
+                    imageUri = selectedImageUri.toString();
                 }
             }
         }

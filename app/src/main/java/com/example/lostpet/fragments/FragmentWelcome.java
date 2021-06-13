@@ -1,6 +1,7 @@
 package com.example.lostpet.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.lostpet.R;
+import com.example.lostpet.activities.RandomPictureActivity;
 import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
+
+import java.util.Objects;
 
 public class FragmentWelcome extends Fragment {
     public static final String TAG_FRAGMENT_WELCOME="TAG_FRAGMENT_WELCOME";
@@ -52,18 +56,27 @@ public class FragmentWelcome extends Fragment {
         view.findViewById(R.id.btn_login).setOnClickListener(v -> {
             goToLogin();
         });
+
+        view.findViewById(R.id.btn_random_pets).setOnClickListener(v -> {
+            goToRandomPets();
+        });
     }
 
     private  void goToRegister(){
          if(activityCommunication !=null){
-             activityCommunication.onReplaceFragment(FragmentRegister.TAG_FRAGMENT_REGISTER);
+             activityCommunication.onAddFragment(FragmentRegister.TAG_FRAGMENT_REGISTER);
          }
     }
 
     private void goToLogin() {
         if(activityCommunication != null) {
-            activityCommunication.onReplaceFragment(FragmentLogin.TAG_FRAGMENT_LOGIN);
+            activityCommunication.onAddFragment(FragmentLogin.TAG_FRAGMENT_LOGIN);
         }
+    }
+
+    private void goToRandomPets()  {
+        startActivity(new Intent(getActivity(), RandomPictureActivity.class));
+      //  Objects.requireNonNull(getActivity()).finish();
     }
 
 }

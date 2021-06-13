@@ -1,6 +1,9 @@
 package com.example.lostpet.fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -101,6 +105,10 @@ public class FragmentView extends Fragment {
 
     }
 
-
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        requireActivity().getContentResolver().takePersistableUriPermission(Uri.parse(announcementList.get(0).getImageUri()), Intent.FLAG_GRANT_READ_URI_PERMISSION);
+    }
 }
