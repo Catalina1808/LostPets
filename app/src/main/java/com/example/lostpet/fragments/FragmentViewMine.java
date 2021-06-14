@@ -95,7 +95,6 @@ public class FragmentViewMine extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-
     }
 
 

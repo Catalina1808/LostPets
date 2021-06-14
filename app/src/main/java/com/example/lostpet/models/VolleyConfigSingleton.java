@@ -42,9 +42,6 @@ public class VolleyConfigSingleton {
         return requestQueue;
     }
 
-    public ImageLoader getImageLoader() {
-        return imageLoader;
-    }
 
     public static synchronized VolleyConfigSingleton getInstance(Context context) {
         if (instance == null) {
@@ -53,7 +50,4 @@ public class VolleyConfigSingleton {
         return instance;
     }
 
-    public <T> void addToRequestQueue(Request<T> request) {
-        getRequestQueue().add(request);
-    }
 }

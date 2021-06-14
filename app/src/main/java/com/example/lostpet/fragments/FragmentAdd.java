@@ -123,7 +123,7 @@ public class FragmentAdd extends Fragment {
 
     public void insertAnnouncement() {
 
-        String ownerEmail = OwnerEmail.toString();
+        String ownerEmail = OwnerEmail;
         String breed = ETBreed.getText().toString();
         String location = ETLocation.getText().toString();
         String petName = ETPetName.getText().toString();
@@ -214,14 +214,9 @@ public class FragmentAdd extends Fragment {
 
     void imageChooser() {
 
-        // create an instance of the
-        // intent of the type image
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_OPEN_DOCUMENT);
-
-        // pass the constant to compare it
-        // with the returned requestCode
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
     }
 
@@ -232,21 +227,13 @@ public class FragmentAdd extends Fragment {
 
         if (resultCode == RESULT_OK) {
 
-            // compare the resultCode with the
-            // SELECT_PICTURE constant
             if (requestCode == SELECT_PICTURE) {
-                // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
-                    // update the preview image in the layout
 
                     getContext().grantUriPermission(getContext().getPackageName(), selectedImageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     final int takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION;
                     getContext().getContentResolver().takePersistableUriPermission(selectedImageUri, takeFlags);
-
-
-
-
 
                     IVPreviewImage.setImageURI(selectedImageUri);
                     imageUri = selectedImageUri.toString();

@@ -81,8 +81,6 @@ public class AllAnnouncementsAdapter extends RecyclerView.Adapter<AllAnnouncemen
             owner_email.setText((announcementElement.getOwner_email()));
             image.setImageURI(Uri.parse((announcementElement.getImageUri())));
 
-
-
         }
 
 

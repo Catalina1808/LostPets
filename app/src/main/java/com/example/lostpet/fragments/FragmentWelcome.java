@@ -76,7 +76,6 @@ public class FragmentWelcome extends Fragment {
 
     private void goToRandomPets()  {
         startActivity(new Intent(getActivity(), RandomPictureActivity.class));
-      //  Objects.requireNonNull(getActivity()).finish();
     }
 
 }

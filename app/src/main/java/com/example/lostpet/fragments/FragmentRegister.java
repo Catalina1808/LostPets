@@ -46,10 +46,6 @@ public class FragmentRegister extends Fragment {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser=mAuth.getCurrentUser();
-        if(currentUser!=null)
-        {
-            // to do
-        }
     }
 
     @Override
@@ -76,7 +72,6 @@ public class FragmentRegister extends Fragment {
          String email=emailEditText.getText().toString();
          String password=passwordEditText.getText().toString();
 
-         //email
         if(!UtilsValidators.isValidEmail(email))
         {
             emailEditText.setError("Invalid Email");
@@ -87,7 +82,6 @@ public class FragmentRegister extends Fragment {
             emailEditText.setError(null);
         }
 
-        //password
         if(!UtilsValidators.isValidPassword(password))
         {
             passwordEditText.setError("Invalid Password");
