@@ -3,6 +3,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +64,8 @@ public class FragmentLogin extends Fragment {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        emailEditText.setText(preferences.getString("EMAIL", ""));
         if (currentUser != null) {
             //TO DO
         }
@@ -77,6 +80,7 @@ public class FragmentLogin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
         view.findViewById(R.id.btn_login).setOnClickListener(v -> {
             validateEmailAndPassword();
@@ -134,6 +138,8 @@ public class FragmentLogin extends Fragment {
                         Toast.makeText(getContext(), "Authentication success.",
                                 Toast.LENGTH_SHORT).show();
 
+
+
                         goToSecondActivity();
                     } else {
                         Toast.makeText(getContext(), "Authentication failed.",
@@ -148,6 +154,21 @@ public class FragmentLogin extends Fragment {
     private void goToSecondActivity() {
         startActivity(new Intent(getActivity(), SecondActivity.class));
         Objects.requireNonNull(getActivity()).finish();
+    }
+
+
+    void saveEmail(EditText text) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("EMAIL", text.getText().toString());
+        editor.apply();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        saveEmail(emailEditText);
     }
 
 }
