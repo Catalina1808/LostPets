@@ -59,15 +59,35 @@
         android:layout_height="0dp"
         android:fontFamily="casual"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/selector_button_background_orange"
-        android:text="SELECT IMAGE"
+        android:text="@string/select_image"
         android:textColor="@color/selector_white_alpha"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edt_location"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintWidth_percent="0.6" />
+
+    <Button
+        android:id="@+id/BSelect2"
+        android:layout_width="0dp"
+        android:drawableLeft="@drawable/ic_pet"
+        android:drawableRight="@drawable/ic_pet"
+        android:layout_height="0dp"
+        android:fontFamily="casual"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_button_background_orange"
+        android:text="@string/get_location"
+        android:textColor="@color/selector_white_alpha"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/BSelectImage"
         app:layout_constraintVertical_bias="0.01"
         app:layout_constraintWidth_percent="0.6" />
 
@@ -84,7 +104,7 @@
         app:layout_constraintHeight_percent="0.06"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/BSelectImage"
+        app:layout_constraintTop_toBottomOf="@id/BSelect2"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintWidth_percent="0.6" />
 
