@@ -58,7 +58,7 @@ class RandomPictureActivity : AppCompatActivity() {
             Response.ErrorListener { error ->
                 Toast.makeText(
                     this,
-                    "ERROR: get users failed with error: ${error.message}",
+                    "ERROR: get photos failed with error: ${error.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }

@@ -106,12 +106,17 @@ public class FragmentAdd extends Fragment {
 
     public void insertAnnouncement(){
 
-        String ownerEmail= OwnerEmail.toString();
+        String ownerEmail= OwnerEmail;
         String breed= ETBreed.getText().toString();
         String location= ETLocation.getText().toString();
         String petName= ETPetName.getText().toString();
-        if(ownerEmail.isEmpty() || breed.isEmpty() || location.isEmpty() || petName.isEmpty() || imageUri.isEmpty())
+        if(ownerEmail.isEmpty() || breed.isEmpty() || location.isEmpty() || petName.isEmpty() || IVPreviewImage.isShown()) {
+            Toast.makeText(getContext(),
+                    "You have not completed all fields.",
+                    Toast.LENGTH_LONG
+            ).show();
             return;
+        }
 
         AnnouncementItem announcementItem= new AnnouncementItem(petName, breed, imageUri, ownerEmail, location);
         AnnouncementRepository.OnInsertAnnouncementListener listener=  new AnnouncementRepository.OnInsertAnnouncementListener() {
@@ -176,9 +181,6 @@ public class FragmentAdd extends Fragment {
                     getContext().grantUriPermission(getContext().getPackageName(), selectedImageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     final int takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION;
                     getContext().getContentResolver().takePersistableUriPermission(selectedImageUri, takeFlags);
-
-
-
 
 
                     IVPreviewImage.setImageURI(selectedImageUri);
