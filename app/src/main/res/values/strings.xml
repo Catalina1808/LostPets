@@ -13,6 +13,7 @@
     <string name="pet_name">Pet name</string>
     <string name="breed">Breed</string>
     <string name="location">Location</string>
+    <string name="enter_location">Enter location</string>
     <string name="delete">Delete</string>
     <string name="sign_out">Sign Out</string>
 

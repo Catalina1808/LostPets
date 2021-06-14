@@ -109,6 +109,6 @@ public class FragmentView extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        requireActivity().getContentResolver().takePersistableUriPermission(Uri.parse(announcementList.get(0).getImageUri()), Intent.FLAG_GRANT_READ_URI_PERMISSION);
+       // requireActivity().getContentResolver().takePersistableUriPermission(Uri.parse(announcementList.get(0).getImageUri()), Intent.FLAG_GRANT_READ_URI_PERMISSION);
     }
 }

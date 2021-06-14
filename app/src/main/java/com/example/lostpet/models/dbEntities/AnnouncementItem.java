@@ -29,6 +29,7 @@ public class AnnouncementItem {
         this.ownerEmail=ownerEmail;
         this.location=location;
     }
+
     @PrimaryKey(autoGenerate = true)
     public int id;
     @ColumnInfo

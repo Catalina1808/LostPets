@@ -2,12 +2,8 @@ package com.example.lostpet.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,18 +15,26 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.lostpet.R;
 import com.example.lostpet.data.AnnouncementRepository;
 import com.example.lostpet.interfaces.OnFragmentActivityCommunication;
 import com.example.lostpet.models.dbEntities.AnnouncementItem;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.places.PlaceManager;
+import com.facebook.places.model.PlaceFields;
+import com.facebook.places.model.PlaceSearchRequestParams;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -80,8 +84,24 @@ public class FragmentAdd extends Fragment {
         BSelectImage = view.findViewById(R.id.BSelectImage);
         IVPreviewImage = view.findViewById(R.id.IVPreviewImage);
         ETBreed= view.findViewById(R.id.edt_breed);
-        ETLocation= view.findViewById(R.id.edt_location);
         ETPetName= view.findViewById(R.id.edt_name);
+        ETLocation=view.findViewById(R.id.edt_location);
+
+/*
+        ETLocation.setFocusable(false);
+        ETLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Place.Field> fieldList= Arrays.asList(Place.Field.ADDRESS, Place.Field.NAME);
+                Intent intent=new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fieldList).build(getContext());
+                startActivityForResult(intent, 1);
+            }
+        });
+        Places.initialize(getContext(),"AIzaSyBPckAnhj4tGL7gnYoAUwXdDC4ZNjSwMAo" );
+
+
+ */
+
     }
 
     public void insertAnnouncement(){
@@ -104,18 +124,6 @@ public class FragmentAdd extends Fragment {
             }
         };
         announcementRepository.insertAnnouncement(announcementItem, listener);
-    }
-
-
-    public void getAnnouncements(){
-        AnnouncementRepository.OnGetAnnouncementsListener listener=  new AnnouncementRepository.OnGetAnnouncementsListener() {
-            @Override
-            public void onSuccess(List<AnnouncementItem> announcementItems) {
-                Log.e("Error", "Get announcements");
-            }
-        };
-
-        announcementRepository.getAnnouncements(listener);
     }
 
     @Override
@@ -143,7 +151,7 @@ public class FragmentAdd extends Fragment {
         // intent of the type image
         Intent i = new Intent();
         i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
+        i.setAction(Intent.ACTION_OPEN_DOCUMENT);
 
         // pass the constant to compare it
         // with the returned requestCode
@@ -164,11 +172,40 @@ public class FragmentAdd extends Fragment {
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
+
+                    getContext().grantUriPermission(getContext().getPackageName(), selectedImageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    final int takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION;
+                    getContext().getContentResolver().takePersistableUriPermission(selectedImageUri, takeFlags);
+
+
+
+
+
                     IVPreviewImage.setImageURI(selectedImageUri);
                     imageUri = selectedImageUri.toString();
+
 
                 }
             }
         }
+
+
+
+        //maps
+        /*
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Place place = Autocomplete.getPlaceFromIntent(data);
+                Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
+            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+                Status status = Autocomplete.getStatusFromIntent(data);
+                Log.i(TAG, status.getStatusMessage());
+            }
+        }
+
+         */
+
+
+
     }
 }

@@ -1,6 +1,8 @@
 package com.example.lostpet.adapters;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -79,6 +81,8 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
 
             deleteBtn.setOnClickListener(v -> {
+
+
                 AnnouncementRepository announcementRepository=new AnnouncementRepository();
                 AnnouncementItem announcementItem=new AnnouncementItem(announcementElement.getId(),announcementElement.getPetName(),announcementElement.getBreed(),announcementElement.getImageUri(), announcementElement.getOwner_email(), announcementElement.getLocation());
                 announcementRepository.deleteAnnouncement(announcementItem);

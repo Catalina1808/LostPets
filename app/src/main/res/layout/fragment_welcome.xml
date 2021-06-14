@@ -9,6 +9,8 @@
 
     <Button
         android:id="@+id/btn_login"
+        android:drawableLeft="@drawable/ic_pet"
+        android:drawableRight="@drawable/ic_pet"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="casual"
@@ -26,6 +28,8 @@
     <Button
 
         android:id="@+id/btn_register"
+        android:drawableLeft="@drawable/ic_pet"
+        android:drawableRight="@drawable/ic_pet"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="casual"
@@ -43,6 +47,8 @@
     <Button
 
         android:id="@+id/btn_random_pets"
+        android:drawableLeft="@drawable/ic_pet"
+        android:drawableRight="@drawable/ic_pet"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="casual"
