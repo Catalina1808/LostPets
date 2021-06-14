@@ -70,12 +70,6 @@ public class FragmentAdd extends Fragment {
     private int SELECT_PICTURE = 200;
 
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient;
-    }
-
     public static Fragment newInstance() {
         Bundle args = new Bundle();
 
@@ -108,11 +102,8 @@ public class FragmentAdd extends Fragment {
         ETBreed = view.findViewById(R.id.edt_breed);
         ETPetName = view.findViewById(R.id.edt_name);
         ETLocation = view.findViewById(R.id.edt_location);
-        //FusedLocationProviderClient fusedLocationProviderClient;
         btLocation = view.findViewById(R.id.BSelect2);
-        //Activity activity = null;
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-
 /*
         ETLocation.setFocusable(false);
         ETLocation.setOnClickListener(new View.OnClickListener() {
@@ -166,10 +157,9 @@ public class FragmentAdd extends Fragment {
             @Override
             public void onClick(View v) {
                 //check permission
-
                 if (ActivityCompat.checkSelfPermission(getActivity(),
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    //when permission is true
+                    //when permission is granted
                     getLocation();
                 }
                 else
@@ -193,13 +183,6 @@ public class FragmentAdd extends Fragment {
 
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
