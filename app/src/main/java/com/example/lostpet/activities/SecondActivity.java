@@ -1,7 +1,9 @@
 package com.example.lostpet.activities;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,39 +37,10 @@ public class SecondActivity extends AppCompatActivity implements OnFragmentActiv
         fragmentTransaction.commit();
     }
 
-    public void onReplaceFragment(String TAG){
-        FragmentManager fragmentManager= getSupportFragmentManager();
-
-        Fragment fragment;
-
-        switch (TAG){
-            case TAG_FRAGMENT_ADD:{
-                fragment= FragmentAdd.newInstance();
-                break;
-            }
-
-            case TAG_FRAGMENT_VIEW:{
-                fragment= FragmentView.newInstance();
-                break;
-            }
-
-            case TAG_FRAGMENT_VIEW_MINE:{
-                fragment= FragmentViewMine.newInstance();
-                break;
-            }
-
-            default: return;
-        }
-
-        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fly_container2,fragment, TAG);
-        fragmentTransaction.commit();
-    }
 
 
     public void onAddFragment(String TAG){
         FragmentManager fragmentManager= getSupportFragmentManager();
-
         Fragment fragment;
 
         switch (TAG){
