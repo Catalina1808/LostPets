@@ -99,6 +99,7 @@ public class FragmentAdd extends Fragment {
         OwnerEmail = mAuth.getCurrentUser().getEmail();
         BSelectImage = view.findViewById(R.id.BSelectImage);
         IVPreviewImage = view.findViewById(R.id.IVPreviewImage);
+        imageUri= null;
         ETBreed = view.findViewById(R.id.edt_breed);
         ETPetName = view.findViewById(R.id.edt_name);
         ETLocation = view.findViewById(R.id.edt_location);
@@ -123,11 +124,11 @@ public class FragmentAdd extends Fragment {
 
     public void insertAnnouncement() {
 
-        String ownerEmail = OwnerEmail;
+        String ownerEmail = OwnerEmail.toString();
         String breed = ETBreed.getText().toString();
         String location = ETLocation.getText().toString();
         String petName = ETPetName.getText().toString();
-        if (ownerEmail.isEmpty() || breed.isEmpty() || location.isEmpty() || petName.isEmpty() || imageUri.isEmpty())
+        if (ownerEmail.isEmpty() || breed.isEmpty() || location.isEmpty() || petName.isEmpty() || imageUri==null)
             return;
 
         AnnouncementItem announcementItem = new AnnouncementItem(petName, breed, imageUri, ownerEmail, location);
@@ -217,6 +218,7 @@ public class FragmentAdd extends Fragment {
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_OPEN_DOCUMENT);
+
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
     }
 
@@ -228,12 +230,15 @@ public class FragmentAdd extends Fragment {
         if (resultCode == RESULT_OK) {
 
             if (requestCode == SELECT_PICTURE) {
+                // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
+                    // update the preview image in the layout
 
                     getContext().grantUriPermission(getContext().getPackageName(), selectedImageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     final int takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION;
                     getContext().getContentResolver().takePersistableUriPermission(selectedImageUri, takeFlags);
+
 
                     IVPreviewImage.setImageURI(selectedImageUri);
                     imageUri = selectedImageUri.toString();
