@@ -9,6 +9,7 @@
         android:id="@+id/edt_name"
         android:layout_width="0dp"
         android:fontFamily="casual"
+        android:textColor="@color/black"
         app:layout_constraintWidth_percent="0.8"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +24,7 @@
     <EditText
         android:id="@+id/edt_breed"
         android:layout_width="0dp"
+        android:textColor="@color/black"
         android:fontFamily="casual"
         app:layout_constraintWidth_percent="0.8"
         android:layout_marginTop="@dimen/default_space"
@@ -39,6 +41,7 @@
         android:id="@+id/edt_location"
         android:layout_width="0dp"
         android:fontFamily="casual"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_space"
         android:hint="@string/enter_location"

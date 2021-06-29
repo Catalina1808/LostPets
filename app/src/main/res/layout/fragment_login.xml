@@ -8,6 +8,7 @@
     <EditText
         android:id="@+id/edt_email"
         android:layout_width="0dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:hint="@string/email"
         android:fontFamily="casual"
@@ -23,6 +24,7 @@
     <EditText
         android:id="@+id/edt_password"
         android:layout_width="0dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_space"
         android:hint="@string/password"
